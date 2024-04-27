@@ -1,0 +1,12 @@
+[Unit]
+Description=Notify emby of media library changes
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+EnvironmentFile=/volume1/emby_media_watcher/.env
+ExecStart=/volume1/emby_media_watcher/.venv/bin/python /volume1/emby_media_watcher/emby_media_watcher.py
+
+[Install]
+WantedBy=multi-user.target
